@@ -1,0 +1,495 @@
+/*set colors for consistent colour theme*/
+:root{
+    --white: #FEF9FF;
+    --black: #050505;
+    --backgroundMain: #494F5B;
+    --backgroundSecondary: #2e4052;
+    --backgroundDark: #333C48;
+    --blueHighlight: #709DC3;
+    --blueFlare: #279AF1;
+    --purpleHighlight: #8D72A6;
+}
+
+html{
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+/*increase font size on mobile*/
+@media screen and (max-width: 1200px){
+    html{
+        font-size: 25px;
+    }
+}
+
+body {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 0;
+
+    background-color: var(--backgroundMain);
+    color: var(--white);
+}
+
+/*Fonts*/
+nav{
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+html{
+    font-family: 'Rubik', sans-serif;
+}
+
+h1{
+    font-family: 'Lora', serif;
+}
+
+.quotes{
+    font-style: italic;
+}
+/*END Fonts*/
+
+/*Miscellaneous*/
+.quotes{
+    list-style: none;
+}
+
+.quotes li{
+    margin: 1.2rem 0;
+}
+
+.quotes .name{
+    opacity: 50%;
+}
+/*END Miscellaneous*/
+
+/*Navigation*/
+nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: var(--backgroundSecondary);
+}
+
+.navInnerContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 11% 0 5%;
+    width: 100%;
+}
+
+.navInnerContainer > ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    list-style: none;
+    margin: 1.2rem 0;
+}
+
+.navInnerContainer > ul > li {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.navInnerContainer > ul > li > a {
+    padding: 0.6rem 1.2rem;
+    border-radius: 1.2rem;
+    margin-left: 1.2rem;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    background-color: var(--blueHighlight);
+    color: inherit;
+
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+}
+
+.navInnerContainer > ul > li > a:hover{
+    background-color: var(--purpleHighlight);
+}
+
+.navInnerContainer > a {
+    margin: 1.2rem;
+}
+
+#accountDropdown {
+    margin: 0 1% 0 auto;
+}
+
+#logoContainer{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#logoImage{
+    width: 14rem;
+    margin: 1.2rem 0;
+}
+
+/*rearrange nav to vertical orientation when on mobile*/
+@media screen and (max-width: 1200px) {
+    .navInnerContainer{
+        margin: 0;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: start;
+    }
+
+    .navInnerContainer > ul{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navInnerContainer > ul > li{
+        margin: 0.1rem 0;
+    }
+
+    .navInnerContainer > ul > li > a{
+        display: inline-block;
+        border-radius: 0;
+        margin: 0;
+        min-width: 8rem;
+    }
+
+    #accountDropdown{
+        padding: 2rem 1.2rem;
+    }
+
+    #logoImage{
+        display: none;
+    }
+}
+
+/*END Navigation*/
+
+/*Footer*/
+footer{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 0.75rem;
+    margin-top: auto;
+    background-color: var(--backgroundSecondary);
+    font-family: 'Noto Sans JP', sans-serif;
+}
+/*END Footer*/
+
+/*Containers*/
+.layoutContainer{
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    /*flex-basis: 0;*/
+}
+
+.contentContainer{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 5rem;
+    background-color: var(--backgroundDark);
+}
+
+.contentContainer img{
+    width: 100%;
+}
+
+.equalContainer{
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+}
+
+.imageContainer{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.imageContainerSmall{
+    height: 300px;
+    width: 180px;
+}
+
+.imageContainerCaption{
+    /*see 'panelswapper.css' line 84*/
+    margin-top: auto;
+
+    padding: 0.6rem;
+    background: rgba(5, 5, 5, 0.8);
+    text-align: left;
+}
+
+.imageContainerCaption > *{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+form{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+form input {
+    margin: 0.5rem;
+    font-size: 1.2rem;
+}
+
+form input[type="button"]{
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    padding: 0.18rem 0.5rem;
+    border: none;
+    width: auto;
+
+    color: var(--white);
+    background-color: var(--blueHighlight);
+    -webkit-transition: background-color 0.2s;
+    -o-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+}
+
+form input[type="button"]:hover{
+    background-color: var(--blueFlare);
+}
+
+.container-border{
+    border: 1px var(--white) solid;;
+}
+
+.container-border-bottom{
+    border-bottom: 1px var(--white) solid;;
+}
+
+.container-border-top{
+    border-top: 1px var(--white) solid;;
+}
+
+.container-border-left{
+    border-left: 1px var(--white) solid;;
+}
+
+.container-border-right{
+    border-right: 1px var(--white) solid;;
+}
+
+@media screen and (max-width: 1200px) {
+    /*rearrange containers so they stack vertically and not side by side on mobile*/
+    .layoutContainer{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .contentContainer{
+        border-right: none;
+        border-left: none;
+    }
+
+    /*make small image containers 100% of the width of the container on mobile*/
+    .imageContainerSmall{
+        width: 100%;
+        height: 50rem;
+    }
+}
+/*END Containers*/
+
+/*Dropdown Container*/
+.dropdown{
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-button{
+    cursor: pointer;
+}
+
+.dropdown-button span{
+    pointer-events: none;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.dropdown-content a{
+    display: block;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    min-width: 7.5rem;
+
+    color: inherit;
+    background-color: #253341;
+    -webkit-transition: background-color 0.1s;
+    -o-transition: background-color 0.1s;
+    transition: background-color 0.1s;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--blueHighlight);
+}
+.dropdownShow{
+    display: block;
+}
+
+@media screen and (max-width: 1200px){
+    /*make dropdown buttons bigger, easier to press on a touch screen*/
+    .dropdown-content a{
+        padding: 2rem 0.5rem;
+    }
+}
+/*END Dropdown Container*/
+
+/*Utility*/
+.roundFull{
+    border-radius: 1.2rem;
+}
+
+.roundLeft{
+    border-radius: 1.2rem 0 0 1.2rem;
+}
+
+.roundRight{
+    border-radius: 0 1.2rem 1.2rem 0;
+}
+
+.roundBottomLeft{
+    border-radius: 0 0 0 1.2rem;
+}
+
+.roundBottomRight{
+    border-radius: 0 0 1.2rem 0;
+}
+
+.roundTopLeft{
+    border-radius: 1.2rem 0 0 0;
+}
+
+.roundTopRight{
+    border-radius: 0 1.2rem 0 0;
+}
+
+.center{
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+}
+
+.centerAlign{
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.centerJustify{
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.centerText{
+    text-align: center;
+}
+
+.button{
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.hidden{
+    display: none;
+}
+
+/*utility classes that only apply on mobile, self explanatory*/
+@media screen and (max-width: 1200px){
+    .removeRoundOnMobile{
+        border-radius: 0;
+    }
+
+    .centerTextOnMobile{
+        text-align: center;
+    }
+
+    .justifyTextOnMobile{
+        text-align: justify;
+    }
+}
+/*END Utility*/

@@ -1,0 +1,25 @@
+#Options -Indexes
+
+# Suppress PHP errors
+#php_flag display_startup_errors off
+#php_flag display_errors off
+#php_flag html_errors off
+#php_value docref_root 0
+#php_value docref_ext 0
+
+# Enable PHP error logging
+php_flag  log_errors on
+php_value error_log  C:\Users\Lynx\xampp\htdocs\U27A2\tmp\logs\server.log
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ public/index.php?url=$1 [QSA,L]
+
+RewriteCond %{REQUEST_URI} ^/404/$
+RewriteRule ^(.*)$ /pages/errors/404.php [L]
+
+</IfModule>
+
+#ErrorDocument 403 http://localhost/u27a2/404/
