@@ -4,13 +4,11 @@ let form = document.getElementById('signupForm');
 function signup() {
     let req = new XMLHttpRequest();
     req.onreadystatechange = () =>{
-        console.log(req.status);
         if (req.readyState == 4 && req.status == 200) {
             let response = JSON.parse(req.responseText)
             if(response.success){
                 form.style.display = 'none';
-                messageBox.innerText = "Successfully created account!";
-                // window.location.replace("http://localhost/u27a2/")
+                messageBox.innerHTML = "Successfully created account!<br><a href='" + Config.BASE_URL + "login'>Click here to login</a>";
             }
             else {
                 messageBox.innerText = response.error;
@@ -19,7 +17,7 @@ function signup() {
         }
     }
 
-    req.open("POST", 'http://localhost/u27a2/login/addUser');
+    req.open("POST", Config.BASE_URL + 'login/addUser');
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.send('username=' + encodeURIComponent(form.username.value) + '&password=' + encodeURIComponent(form.password.value));
 }

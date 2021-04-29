@@ -27,6 +27,13 @@ class Login extends Model
     }
 
     function signUpUser($username, $password){ // adds a new user to the database
+        $username = trim($username); // remove trailing whitespace
+        $password = trim($password);
+
+        if($username === '' or $password === ''){
+            $this->error = Util::errorOut("Username and password blank username[$username], password[$password]", 'Invalid username/password');
+            return false;
+        }
         $result = $this->query("SELECT username FROM login WHERE username = '$username'"); // check for existing users with same username
         if($result === false){ // if database returned an error
             $this->error = Util::errorOut($this->get_error());

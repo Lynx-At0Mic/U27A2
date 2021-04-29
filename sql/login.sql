@@ -8,7 +8,7 @@ create table login
 	access_token varchar(255) not null,
 	creation_date datetime default current_timestamp() null,
 	last_login_date datetime null,
-	constraint login_username_uindex
+	constraint username
 		unique (username)
 );
 

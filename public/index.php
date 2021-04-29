@@ -25,8 +25,7 @@ else{
     $urlArray = array();
     $mvcArray = array();
     $urlArray = explode("/",$url);
-//    print_r($urlArray);
-//    print_r(array_slice($urlArray, 2));
+
     $count = 0;
     foreach ($urlArray as $urlElem){
         if($urlElem === ''){$urlElem = null;}
@@ -38,13 +37,12 @@ else{
         $count++;
     }
 
-//    print_r($mvcArray);
-
     $controller = $mvcArray[0] ?? die('Something went very wrong :monkaS:');
     array_shift($mvcArray);
     $action = $mvcArray[0] ?? 'defaultAction';
     array_shift($mvcArray);
-    $queryString = $mvcArray[0] ?? array('default');
+    $queryString = count($mvcArray)==0 ? array('default') : $mvcArray;
+    $queryString = is_array($queryString) ? $queryString : array($queryString);
 
 //    if(count($queryString) > 1){ // remove extra query items in URL
 //        header('Location: '. BASE_URL . "$controller/$action/$queryString[0]");
