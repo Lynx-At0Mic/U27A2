@@ -37,9 +37,9 @@ else{
         $count++;
     }
 
-    $controller = $mvcArray[0] ?? die('Something went very wrong :monkaS:');
+    $controller = @$mvcArray[0] ?: die('Something went very wrong :monkaS:');
     array_shift($mvcArray);
-    $action = $mvcArray[0] ?? 'defaultAction';
+    $action = @$mvcArray[0] ?: 'defaultAction';
     array_shift($mvcArray);
     $queryString = count($mvcArray)==0 ? array('default') : $mvcArray;
     $queryString = is_array($queryString) ? $queryString : array($queryString);
