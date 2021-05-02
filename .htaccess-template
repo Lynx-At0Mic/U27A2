@@ -9,7 +9,7 @@
 
 # Enable PHP error logging
 php_flag  log_errors on
-php_value error_log  C:\Users\Lynx\xampp\htdocs\U27A2\tmp\logs\server.log
+php_value error_log  LOG_PATH_GOES_HERE.log
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -21,5 +21,3 @@ RewriteCond %{REQUEST_URI} ^/404/$
 RewriteRule ^(.*)$ /pages/errors/404.php [L]
 
 </IfModule>
-
-#ErrorDocument 403 http://localhost/u27a2/404/
