@@ -1,13 +1,13 @@
 <?php
 
-define('BASE_URL', 'http://localhost/u27a2/');
-define('BASE_MEDIA', 'http://localhost/u27a2/public/media/');
+define('BASE_URL', 'PATH TO SITE ROOT HERE/');
+define('BASE_MEDIA', BASE_URL . 'public/media/');
 
 $db_mode = "development";
 
 if($db_mode === "development"){
     define('DEVELOPMENT_ENVIRONMENT', true);
-    $db_config = new DatabaseConfig('localhost', 'root', '', 'unit27a2');
+    $db_config = new DatabaseConfig('HOST', 'USER', 'PASSWORD', 'DATABASE');
 }
 else{
     define('DEVELOPMENT_ENVIRONMENT', false);
@@ -29,19 +29,3 @@ class DatabaseConfig
         $this->dbName = $name;
     }
 }
-
-
-//$db_config = array(
-//    "development" => array(
-//        "host" => "localhost",
-//        "name" => "unit27a2",
-//        "user" => "root",
-//        "password" => ""
-//    ),
-//    "production" => array(
-//        "host" => "PROD_HOST",
-//        "name" => "PROD_DB",
-//        "user" => "PROD_USER",
-//        "password" => "PROD_PASSWORD"
-//    )
-//);
