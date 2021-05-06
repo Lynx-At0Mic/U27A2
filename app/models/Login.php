@@ -26,6 +26,22 @@ class Login extends Model
         return $userID;
     }
 
+    function getAccessLevel($userID){
+        $result = $this->query("SELECT access_level FROM login WHERE account_id = '$userID'");
+        if($result === false){ // if database returned an error
+            $this->error = Util::errorOut($this->get_error());
+            return false;
+        }
+        if($this->get_num_rows() === 0){ // if no user with specified username found
+            $this->error = Util::errorOut("User invalid, UserID: $userID Number of rows: " . $this->get_num_rows());
+            return false;
+        }
+        $accessLvl = $result['access_level']; // result contains user id in assoc array
+        $this->free_result();
+        return $accessLvl;
+
+    }
+
     function signUpUser($username, $password){ // adds a new user to the database
         $username = trim($username); // remove trailing whitespace
         $password = trim($password);
@@ -86,6 +102,7 @@ class Login extends Model
                 }
             }
             $_SESSION['token'] = $token; // set session token
+            $_SESSION['access_level'] = $this->getAccessLevel($userID);
 //            echo "set session token to $token";
             return true;
         }

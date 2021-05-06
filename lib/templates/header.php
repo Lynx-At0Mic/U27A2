@@ -35,6 +35,7 @@ global $url;
                     if(@$_SESSION['username']){echo "Logged in as " . @$_SESSION['username'];}
                     else{echo 'Not logged in';}
                 ?></a></li>
+            <li><a href="<?php echo BASE_URL . 'restrictedPage';?>">Restrict test</a></li>
         </ul>
     </div>
 </nav>

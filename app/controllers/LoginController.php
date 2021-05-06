@@ -34,7 +34,7 @@ class LoginController extends Controller
     }
 
     function validateToken(){
-        if(!@$_SESSION['username'] or !@$_SESSION['token']){
+        if(!@$_SESSION['username'] or !@$_SESSION['token'] or !@$_SESSION['access_level']){
             return false;
         }
         if($this->model->validateAccessToken($this->model->getUserID($_SESSION['username']), $_SESSION['token'])){
