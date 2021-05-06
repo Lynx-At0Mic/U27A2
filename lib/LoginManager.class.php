@@ -17,7 +17,8 @@ class LoginManager
     static function requireAccess($level){
         $loggedIn = LoginManager::loggedIn();
         if(!$loggedIn or @$_SESSION['access_level'] < $level){
-            Util::show403error();
+            header('HTTP/1.1 401 Unauthorized', true, 401);
+            Util::show401error();
             die();
         }
     }

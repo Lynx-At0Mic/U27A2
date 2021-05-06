@@ -15,8 +15,8 @@ class Util // class full of static utility methods to make my life easier
         include (ROOT . DS . 'lib' . DS . 'templates' . DS . 'footer.php');
     }
 
-    static function show403error(){
-        include (ROOT . DS . 'lib' . DS . 'error_pages' . DS . '403.php');
+    static function show401error(){
+        include(ROOT . DS . 'lib' . DS . 'error_pages' . DS . '401.php');
         include (ROOT . DS . 'lib' . DS . 'templates' . DS . 'footer.php');
     }
 
