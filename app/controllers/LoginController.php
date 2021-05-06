@@ -34,14 +34,15 @@ class LoginController extends Controller
     }
 
     function validateToken(){
-        if(!$_SESSION['username'] or !$_SESSION['token'])
-        if($this->model->validateAccessToken($this->model->getUserID())){
+        if(!@$_SESSION['username'] or !@$_SESSION['token']){
+            return false;
+        }
+        if($this->model->validateAccessToken($this->model->getUserID($_SESSION['username']), $_SESSION['token'])){
             return true;
         }
         else{
             return false;
         }
-        $this->template->render(false);
     }
 
     function signup(){
