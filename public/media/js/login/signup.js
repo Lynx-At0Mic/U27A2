@@ -21,3 +21,9 @@ function signup() {
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.send('username=' + encodeURIComponent(form.username.value) + '&password=' + encodeURIComponent(form.password.value));
 }
+
+function getEnterKey(event){
+    if(event.keyCode === 13){
+        login();
+    }
+}

@@ -1,6 +1,6 @@
 <div class="layoutContainer center">
     <div class="contentContainer roundFull">
-        <form id="signupForm" action="<?php echo BASE_URL . 'login/addUser'?>" method="post">
+        <form id="signupForm" method="post" onkeypress="getEnterKey(event)">
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
             <input class="button" type="button" name="submitBtn" value="Signup" onclick="signup()">
