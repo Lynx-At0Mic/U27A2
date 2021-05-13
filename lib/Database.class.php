@@ -33,15 +33,15 @@ class Database
         return $this->result; // else return result
     }
 
-    function get_num_rows() {
+    function get_num_rows() { // retruns number of rows result contains
         return $this->result->num_rows;
     }
 
-    function free_result(){
+    function free_result(){ // free momory
         $this->result->free_result();
     }
 
-    function get_error(){
+    function get_error(){ // gets error
         return $this->conn->error;
     }
 }

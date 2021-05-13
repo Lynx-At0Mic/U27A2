@@ -19,7 +19,7 @@ class Controller
 
     }
 
-    function setVar($name,$value) {
+    function setVar($name,$value) { // used to set template variables (view)
         $this->template->setVar($name,$value);
     }
 }

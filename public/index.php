@@ -9,28 +9,28 @@ require_once (ROOT . DS . 'lib' . DS . 'autoloader.php'); // setup class autoloa
 
 session_start();
 
-$url = $_GET['url'];
-if(!$url){
+$url = $_GET['url']; // get URL path from .htaccess for routing
+if(!$url){ // if URL points to base path, load homepage
     include (ROOT . DS . 'lib' . DS . 'templates' . DS . 'header.php');
     include 'page_root/homepage.php';
     include (ROOT . DS . 'lib' . DS . 'templates' . DS . 'footer.php');
 }
 
-else if(file_exists("page_root/$url.php")){
+else if(file_exists("page_root/$url.php")){ // if URL points to page in page_root folder
     include (ROOT . DS . 'lib' . DS . 'templates' . DS . 'header.php');
     include "page_root/$url.php";
     include (ROOT . DS . 'lib' . DS . 'templates' . DS . 'footer.php');
 }
-else{
+else{ // if URL points to MVC controller + action + query, verified by .htaccess
     $urlArray = array();
     $mvcArray = array();
-    $urlArray = explode("/",$url);
+    $urlArray = explode("/",$url); // split URL on '/'
 
     $count = 0;
-    foreach ($urlArray as $urlElem){
+    foreach ($urlArray as $urlElem){ // seperate query string from MVC controller and action
         if($urlElem === ''){$urlElem = null;}
         if($count === 2){
-            array_push($mvcArray, array_slice($urlArray, 2));
+            array_push($mvcArray, array_slice($urlArray, 2)); // push whole query string onto MVC array without splitting
             break;
         }
         array_push($mvcArray, $urlElem);
@@ -55,9 +55,9 @@ else{
     $model = rtrim(ucfirst($controllerName), 's'); // strip s from plural
     $dispatch = new $controller($model, $controllerName, $action);
 
-    if (method_exists($controller, $action)) {
+    if (method_exists($controller, $action)) { // if controller with action exists
         call_user_func_array(array($dispatch,$action),$queryString);
-    } else {
+    } else { // else show 404 page not found
 //        echo "Method $action does not exist in $controller";
         Util::show404error();
     }

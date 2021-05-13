@@ -73,11 +73,13 @@ class Login extends Model
     }
 
     function validateLogin($userID, $password){ // validate userID and password combination
+        // get validation information from database
         $result = $this->query("SELECT pwd_hash, hash_salt, access_token FROM login WHERE account_id='$userID'");
-        if($result === false){
+        if($result === false){ // if database error
             $this->error = Util::errorOut($this->get_error());
             return false;
         }
+        // if no rows returned (No user with userID in database)
         if($this->get_num_rows() == 0){ // if no account with specified username found
             $this->error = Util::errorOut('Login invalid, Number of rows: ' . $this->get_num_rows(), Util::$LoginInvalidMessage);
             $this->free_result();
@@ -88,10 +90,11 @@ class Login extends Model
         $token = $result['access_token'];
         $this->free_result();
 
+        // if password passes verification
         if(password_verify($password . $salt, $hash)){
-            if($token === ""){
-                $token = $this->generateAccessToken($userID);
-                if(!$token){
+            if($token === ""){ // if no access token present in the database
+                $token = $this->generateAccessToken($userID); // generate access token
+                if(!$token){ // on error
                     $this->error = Util::errorOut("Failed to generate token for userID $userID");
                     return false;
                 }
@@ -110,39 +113,44 @@ class Login extends Model
         return false;
     }
 
-    function validateAccessToken($userID, $token){
+    function validateAccessToken($userID, $token){ // validate access token with userID
+        // get access token that corresponds to userID
         $result = $this->query("SELECT access_token FROM login WHERE account_id='$userID'");
-        if($result === false){
+        if($result === false){ // on database error
             $this->error = Util::errorOut("Database error! " . $this->get_error());
             return false;
         }
+        // if no rows returned (No user with userID)
         if($this->get_num_rows() === 0){
             $this->free_result();
             $this->error = Util::errorOut("Access token invalid, could not find user. UserID: $userID Token: $token", Util::$LoginInvalidMessage);
             return false;
         }
+        // if access token matches the one in the database
         if($token === $result['access_token']){
             return true;
         }
+        // else
         $this->error = Util::errorOut("Access token invalid. UserID: $userID Tokens (server, client):---" . $result['access_token'] . '---' . $token, Util::$LoginInvalidMessage);
         return false;
     }
 
-    function generateAccessToken($userID){
-        if(!$userID){return false;}
+    function generateAccessToken($userID){ // generate user access token and insert into database
+        if(!$userID){return false;} // return false if userID supplied if false
         $result = $this->query("SELECT username, pwd_hash, creation_date, access_token FROM login WHERE account_id = '$userID'");
-        if($result === false){
+        if($result === false){ // on database error
             $this->error = Util::errorOut($this->get_error());
             return false;
         }
-        if($result['access_token']){
+        if($result['access_token']){ // if access token already present
             return $result['access_token'];
         }
-        if($this->get_num_rows() === 0){
+        if($this->get_num_rows() === 0){ // if no users with userID are found
             $this->free_result();
             $this->error = Util::errorOut("Could not find user with id '$userID'");
             return false;
         }
+        // create token by hashing username, password hash, and account creation date
         $token = password_hash($result['username'] . $result['pwd_hash'] . $result['creation_date'], PASSWORD_DEFAULT);
         $this->free_result();
         return $token;

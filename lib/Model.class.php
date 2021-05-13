@@ -8,6 +8,6 @@ class Model extends Database
     function __construct() {
         parent::__construct();
 
-        $this->model = get_class($this);
+        $this->model = get_class($this); // gets the name of the model
     }
 }

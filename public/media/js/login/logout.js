@@ -1,7 +1,7 @@
 
 
 function logout(){
-    let req = new XMLHttpRequest();
+    let req = new XMLHttpRequest(); // create AJAX XMLHttpRequest to logout.php and reload page
     req.onreadystatechange = () =>{
         if (req.readyState == 4 && req.status == 200) {
             window.location.reload(true);
