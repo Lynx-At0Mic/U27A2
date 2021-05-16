@@ -24,10 +24,10 @@ class Database
         }
     }
 
-    function query($sql){
+    function query($sql, $raw=false){
         $this->result = $this->conn->query($sql);
         if(!$this->result){return false;} // return false if error
-        if(preg_match("/select/i",$sql)){ // return assoc array if query is a select query
+        if(preg_match("/select/i",$sql) and !$raw){ // return assoc array if query is a select query
             return $this->result->fetch_assoc();
         }
         return $this->result; // else return result
