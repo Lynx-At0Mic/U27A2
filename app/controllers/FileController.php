@@ -18,6 +18,7 @@ class FileController extends Controller{
             echo $error;
         }
         else{
+            $this->setVar('postID', $args[0]);
             $this->setVar('filepath', $file['filepath']);
             $this->setVar('postName', $file['name']);
             $this->setVar('postDesc', $file['description']);
