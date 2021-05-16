@@ -19,8 +19,9 @@ class FileController extends Controller{
         }
         else{
             $this->setVar('postID', $args[0]);
+            $this->setVar('user', $file['user']);
             $this->setVar('filepath', $file['filepath']);
-            $this->setVar('postName', $file['name']);
+            $this->setVar('postTitle', $file['title']);
             $this->setVar('postDesc', $file['description']);
             $this->template->render();
         }

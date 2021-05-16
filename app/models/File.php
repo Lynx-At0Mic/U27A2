@@ -4,7 +4,7 @@
 class File extends Model
 {
     function getAllFiles(){
-        $result = $this->query("SELECT file_id, name, description, filepath FROM files", true);
+        $result = $this->query("SELECT file_id, user, title, description, filepath FROM files", true);
         if($result === false){ // if database error
             $this->error = Util::errorOut($this->get_error());
             return false;
@@ -18,7 +18,7 @@ class File extends Model
     }
 
     function getFileByID($id){
-        $result = $this->query("SELECT name, description, filepath FROM files WHERE file_id = $id");
+        $result = $this->query("SELECT user, title, description, filepath FROM files WHERE file_id = $id");
         if($result === false){ // if database error
             $this->error = Util::errorOut($this->get_error());
             return false;

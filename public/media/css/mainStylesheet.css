@@ -278,6 +278,19 @@ footer{
     width: 100%;
 }
 
+.imageBrowser{
+    padding: 1.5rem 3rem 3rem;
+    border: solid 1px var(--white);
+}
+
+.imageBrowser h2{
+    margin-bottom: 0.1rem;
+}
+.imageBrowser h6{
+    margin-top: 0.1rem;
+}
+
+
 .equalContainer{
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
