@@ -15,9 +15,6 @@ global $url;
 <body>
 <nav>
     <div class="navInnerContainer">
-        <div id="logoContainer">
-            <a href="<?php echo BASE_URL;?>" style="display: flex; justify-content: center"><img id="logoImage" src="<?php echo BASE_MEDIA?>assets/img/logo.png"></a>
-        </div>
         <ul id="navigationList">
             <!--    <li><a href=""></a></li>    -->
             <li><a href="<?php echo BASE_URL;?>">Home</a></li>
@@ -35,7 +32,6 @@ global $url;
                     if(@$_SESSION['username']){echo "Logged in as " . @$_SESSION['username'];}
                     else{echo 'Not logged in';}
                 ?></a></li>
-            <li><a href="<?php echo BASE_URL . 'restrictedPage';?>">Restrict test</a></li>
         </ul>
     </div>
 </nav>
