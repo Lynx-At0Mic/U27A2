@@ -3,14 +3,6 @@
 
 class Login extends Model
 {
-    private $error = "";
-
-    function getError(){ // return error and clear the error message
-        $error = $this->error;
-        $this->error = "";
-        return $error;
-    }
-
     function getUserID($username){ // utility function to grab user id from username
         $result = $this->query("SELECT account_id FROM login WHERE username = '$username'");
         if($result === false){ // if database returned an error

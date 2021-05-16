@@ -3,14 +3,6 @@
 
 class File extends Model
 {
-    private $error = "";
-
-    function getError(){ // return error and clear the error message
-        $error = $this->error;
-        $this->error = "";
-        return $error;
-    }
-
     function getAllFiles(){
         $result = $this->query("SELECT file_id, name, description, filepath FROM files", true);
         if($result === false){ // if database error
