@@ -11,12 +11,17 @@ global $url;
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Noto+Sans+JP&family=Rubik&display=swap" rel="stylesheet">
     <script src="<?php echo BASE_MEDIA;?>js/config/config.js"></script>
+    <script src="<?php echo BASE_MEDIA;?>js/site/navigation.js"></script>
 </head>
 <body>
 <nav>
+    <div class="showOnMobile">
+        <button class="navOpenBtn" onclick="openNav()">☰</button>
+    </div>
     <div class="navInnerContainer">
         <ul id="navigationList">
             <!--    <li><a href=""></a></li>    -->
+            <a href="javascript:void(0)" class="showOnMobile closebtn" onclick="closeNav()">&times;</a>
             <li><a href="<?php echo BASE_URL;?>">Home</a></li>
             <li><?php
                 if(@$_SESSION['username'] and @$_SESSION['token']){
@@ -28,10 +33,10 @@ global $url;
                 }
                 ?></li>
             <li><a href="<?php echo BASE_URL . 'login/signup';?>">Signup</a></li>
-            <li><a href="<?php echo BASE_URL . 'login';?>"><?php
-                    if(@$_SESSION['username']){echo "Logged in as " . @$_SESSION['username'];}
-                    else{echo 'Not logged in';}
-                ?></a></li>
+<!--            <li><a href="--><?php //echo BASE_URL . 'login';?><!--">--><?php
+//                    if(@$_SESSION['username']){echo "Logged in as " . @$_SESSION['username'];}
+//                    else{echo 'Not logged in';}
+//                ?><!--</a></li>-->
         </ul>
     </div>
 </nav>

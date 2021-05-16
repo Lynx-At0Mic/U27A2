@@ -145,6 +145,36 @@ nav {
     margin: 1.2rem;
 }
 
+.navOpenBtn{
+    padding: 0.6rem 1.2rem;
+    border-radius: 1.2rem;
+    margin: 0.8rem;
+    margin-left: 1.2rem;
+    border: none;
+
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 24px;
+
+    background-color: var(--blueHighlight);
+    color: inherit;
+
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+}
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+
+    text-decoration: none;
+    color: inherit;
+}
+
 #accountDropdown {
     margin: 0 1% 0 auto;
 }
@@ -165,11 +195,24 @@ nav {
 
 /*rearrange nav to vertical orientation when on mobile*/
 @media screen and (max-width: 1200px) {
+    nav{
+        display: inline;
+    }
+
     .navInnerContainer{
-        margin: 0;
-        -webkit-box-align: start;
-        -ms-flex-align: start;
         align-items: start;
+
+        height: 100%; /* 100% Full-height */
+        width: 0%; /* 0 width - change this with JavaScript */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Stay on top */
+        top: 0; /* Stay at the top */
+        left: 0;
+        background-color: #111; /* Black*/
+        overflow-x: hidden; /* Disable horizontal scroll */
+        margin: 0;
+        padding-top: 60px; /* Place content 60px from the top */
+        transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
     }
 
     .navInnerContainer > ul{
@@ -190,14 +233,6 @@ nav {
         border-radius: 0;
         margin: 0;
         min-width: 8rem;
-    }
-
-    #accountDropdown{
-        padding: 2rem 1.2rem;
-    }
-
-    #logoImage{
-        display: none;
     }
 }
 
@@ -478,6 +513,13 @@ form input[type="button"]:hover{
     display: none;
 }
 
+.hideOnMobile{
+    display: inline;
+}
+
+.showOnMobile{
+    display: none;
+}
 /*utility classes that only apply on mobile, self explanatory*/
 @media screen and (max-width: 1200px){
     .removeRoundOnMobile{
@@ -490,6 +532,14 @@ form input[type="button"]:hover{
 
     .justifyTextOnMobile{
         text-align: justify;
+    }
+
+    .hideOnMobile{
+        display: none;
+    }
+
+    .showOnMobile{
+        display: inline;
     }
 }
 /*END Utility*/
