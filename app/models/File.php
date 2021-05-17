@@ -29,4 +29,23 @@ class File extends Model
         }
         return $result;
     }
+
+    function registerFile($user, $filename, $title, $description){
+        $result = $this->query("INSERT INTO files (user, title, description, filepath) VALUES ('$user', '$title', '$description', 'tmp')");
+        if($result === false){ // if database error
+            $this->error = Util::errorOut($this->get_error());
+            return false;
+        }
+
+        $id = $this->get_insert_id();
+        $filenameInDB = $id . $filename;
+
+        $result = $this->query("UPDATE files SET filepath = '$filenameInDB' WHERE file_id = $id");
+        if($result === false){ // if database error
+            $this->error = Util::errorOut($this->get_error());
+            return false;
+        }
+        return $filenameInDB;
+
+    }
 }

@@ -26,4 +26,38 @@ class FileController extends Controller{
             $this->template->render();
         }
     }
+
+    function upload(){
+        $this->template->render();
+    }
+
+    function addFile(){
+        if(!LoginManager::loggedIn()){
+            $this->setVar('success', false);
+            $this->setVar('error', 'Unauthorised');
+            $this->template->render();
+            return;
+        }
+        $target_dir = ROOT . DS . "public" . DS . "media" . DS . "uploads";
+        $filename = $this->model->registerFile($_SESSION['username'], basename($_FILES['fileToUpload']['name']), $_POST['title'], $_POST['description']);
+
+        if (!$filename){
+            $this->setVar('success', false);
+            $this->setVar('error', $this->model->getError());
+            $this->template->render();
+            return;
+        }
+        $filepath = $target_dir . DS . $filename;
+
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $filepath)){
+            $this->setVar('success', true);
+            $this->setVar('error', null);
+            $this->template->render();
+        }
+        else {
+            $this->setVar('success', false);
+            $this->setVar('error', 'Error uploading file');
+            $this->template->render();
+        }
+    }
 }
