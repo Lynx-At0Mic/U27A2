@@ -22,6 +22,7 @@ class LoginController extends Controller
             $_SESSION['username'] = $_POST['username'];
             // get access token for user
             if($token = $this->model->generateAccessToken($this->model->getUserID($_POST['username']))) {
+                LogManager::logActivity('User login, user: ' . $_POST['username']);
                 $_SESSION['token'] = $token;
             }
             else{ // if there was an error getting the access token
@@ -29,6 +30,7 @@ class LoginController extends Controller
             }
         }
         else{ // if login credentials are not valid
+            LogManager::logError("User login failed to validate. Username: " . $_POST['username']);
             $this->setVar('validLogin', false);
             $this->setVar('token', null);
             $this->setVar('error', $this->model->getError());
@@ -42,6 +44,7 @@ class LoginController extends Controller
         }
         // if user login credentials are valid
         if($this->model->validateAccessToken($this->model->getUserID($_SESSION['username']), $_SESSION['token'])){
+            LogManager::logActivity('Validated token for user: ' . $_SESSION['username']);
             return true;
         }
         else{
@@ -60,6 +63,7 @@ class LoginController extends Controller
             $this->setVar('error', null);
         }
         if($this->model->signUpUser($_POST['username'], $_POST['password'])){ // sign up user with username and password
+            LogManager::logActivity('User signup using username: ' . $_POST['username']);
             $this->setVar('success', true);
             $this->setVar('error', null);
         }

@@ -22,6 +22,7 @@ class Util // class full of static utility methods to make my life easier
 
     // shows devError if global variable DEVELOPMENT_ENVIRONMENT is set, else shows generic error or specified generic error
     static function errorOut($devError, $userError='Internal server error occurred', $line=false){
+        LogManager::logError($devError);
         if(DEVELOPMENT_ENVIRONMENT){
             return $line ? "Line $line: $devError" : $devError;
         }

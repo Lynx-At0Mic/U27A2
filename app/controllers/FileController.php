@@ -61,6 +61,7 @@ class FileController extends Controller{
         $filepath = $target_dir . DS . $filename;
 
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $filepath)){
+            LogManager::logActivity('File uploaded by user: ' . $_SESSION['username']);
             $this->setVar('success', true);
             $this->setVar('error', null);
             $this->template->render();
