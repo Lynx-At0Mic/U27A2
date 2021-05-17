@@ -1,7 +1,7 @@
 <?php
 
 
-class LogManager
+class LogManager // static class to log things to the log file
 {
     static function logActivity($activity){
         $text = "[Activity] - " . $activity;

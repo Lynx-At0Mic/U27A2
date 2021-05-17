@@ -2,9 +2,9 @@
 
 class FileController extends Controller{
 
-    private $acceptedFileTypes = ["txt", "gif", "png", "jpeg", "jpg"];
+    private $acceptedFileTypes = ["txt", "gif", "png", "jpeg", "jpg"]; // file types accepted
 
-    function defaultAction(){
+    function defaultAction(){ // default action site/file
         $rows = $this->model->getAllFiles();
         $this->setVar('files', $rows);
         $this->template->render();
@@ -13,13 +13,13 @@ class FileController extends Controller{
     function view($args){
         $file = $this->model->getFileByID($args[0]);
         $error = $this->model->getError();
-        if(!$file and $error === 'fnf'){
+        if(!$file and $error === 'fnf'){ // if file not found
             Util::show404error();
         }
         elseif($error !== ''){
             echo $error;
         }
-        else{
+        else{ // else show file post
             $this->setVar('postID', $args[0]);
             $this->setVar('user', $file['user']);
             $this->setVar('filepath', $file['filepath']);
@@ -29,17 +29,18 @@ class FileController extends Controller{
         }
     }
 
-    function upload(){
+    function upload(){ // shows upload form
         $this->template->render();
     }
 
-    function addFile(){
-        if(!LoginManager::loggedIn()){
+    function addFile(){ // adds file to database and moves it to upload folder
+        if(!LoginManager::loggedIn()){ // check user is logged in
             $this->setVar('success', false);
             $this->setVar('error', 'Unauthorised');
             $this->template->render();
             return;
         }
+        // check filetype is valid
         $filetype = strtolower(pathinfo($_FILES['fileToUpload']['name'],PATHINFO_EXTENSION));
         if(!in_array($filetype, $this->acceptedFileTypes)){
             $this->setVar('success', false);
@@ -52,7 +53,7 @@ class FileController extends Controller{
         $target_dir = ROOT . DS . "public" . DS . "media" . DS . "uploads";
         $filename = $this->model->registerFile($_SESSION['username'], basename($_FILES['fileToUpload']['name']), $_POST['title'], $_POST['description']);
 
-        if (!$filename){
+        if (!$filename){ // if database error
             $this->setVar('success', false);
             $this->setVar('error', $this->model->getError());
             $this->template->render();
@@ -60,6 +61,7 @@ class FileController extends Controller{
         }
         $filepath = $target_dir . DS . $filename;
 
+        // try to move file to uploads folder
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $filepath)){
             LogManager::logActivity('File uploaded by user: ' . $_SESSION['username']);
             $this->setVar('success', true);
