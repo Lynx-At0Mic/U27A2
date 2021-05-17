@@ -194,8 +194,16 @@ nav {
     margin: 1.2rem 0;
 }
 
+#loginBtn{
+    margin-left: auto;
+}
+
 /*rearrange nav to vertical orientation when on mobile*/
 @media screen and (max-width: 1200px) {
+    #loginBtn{
+        margin-left: inherit;
+    }
+
     nav{
         display: inline;
     }
@@ -217,6 +225,7 @@ nav {
     }
 
     .navInnerContainer > ul{
+        align-items: start;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;

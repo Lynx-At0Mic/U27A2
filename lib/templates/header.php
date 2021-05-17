@@ -24,7 +24,9 @@ global $url;
             <a href="javascript:void(0)" class="showOnMobile closebtn" onclick="closeNav()">&times;</a>
             <li><a href="<?php echo BASE_URL;?>">Home</a></li>
             <li><a href="<?php echo BASE_URL . 'file';?>">Browse</a></li>
-            <li style="margin-left: auto"><?php
+            <li><a href="<?php echo BASE_URL . 'file/upload';?>">Upload</a></li>
+            <li><a href="<?php echo BASE_URL . 'file/admin';?>">Admin</a></li>
+            <li id="loginBtn"><?php
                 if(@$_SESSION['username'] and @$_SESSION['token']){
                     echo '<script src="' . BASE_MEDIA . 'js/login/logout.js"></script>';
                     echo '<a onclick="logout()">Logout</a>';
