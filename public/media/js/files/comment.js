@@ -11,7 +11,7 @@ function loadComments(postID){
             if(response.success){
                 for (let comment of response.comments){
                     let commentElement = document.createElement("div");
-                    commentElement.innerHTML = "<h6>By user " + comment.user + " at " + comment.time + "</h6><p>" + comment.text + "</p>"
+                    commentElement.innerHTML = "<h6>By user " + comment.user + " at " + comment.time + "</h6><p>" + comment.text + "</p><hr>"
                     commentArea.appendChild(commentElement);
                 }
             }

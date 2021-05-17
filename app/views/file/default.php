@@ -1,4 +1,5 @@
 <?php
+LoginManager::requireAccess(3);
 //        echo "<a href='" . BASE_URL . "file/view/" . $file['file_id'] ."'><img src='" . BASE_MEDIA . "uploads/" . $file['filepath'] . "' width='25%' height='auto'></a>";
 if($files) {
     $count = 3;

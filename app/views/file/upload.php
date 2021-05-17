@@ -1,4 +1,5 @@
 <?php
+LoginManager::requireAccess(3);
 ?>
 
 <div class="layoutContainer center">
