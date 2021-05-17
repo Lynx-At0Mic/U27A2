@@ -4,7 +4,7 @@
 class File extends Model
 {
     function getAllFiles(){
-        $result = $this->query("SELECT file_id, user, title, description, filepath FROM files", true);
+        $result = $this->query("SELECT file_id, user, title, description, filepath FROM files ORDER BY file_id DESC", true);
         if($result === false){ // if database error
             $this->error = Util::errorOut($this->get_error());
             return false;

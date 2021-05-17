@@ -2,6 +2,8 @@
 
 class FileController extends Controller{
 
+    private $acceptedFileTypes = ["txt", "gif", "png", "jpeg", "jpg"];
+
     function defaultAction(){
         $rows = $this->model->getAllFiles();
         $this->setVar('files', $rows);
@@ -38,6 +40,15 @@ class FileController extends Controller{
             $this->template->render();
             return;
         }
+        $filetype = strtolower(pathinfo($_FILES['fileToUpload']['name'],PATHINFO_EXTENSION));
+        if(!in_array($filetype, $this->acceptedFileTypes)){
+            $this->setVar('success', false);
+            $this->setVar('error', 'File type not accepted!');
+            $this->template->render();
+            return;
+        }
+
+
         $target_dir = ROOT . DS . "public" . DS . "media" . DS . "uploads";
         $filename = $this->model->registerFile($_SESSION['username'], basename($_FILES['fileToUpload']['name']), $_POST['title'], $_POST['description']);
 
