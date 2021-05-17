@@ -33,11 +33,15 @@ class Database
         return $this->result; // else return result
     }
 
-    function get_num_rows() { // retruns number of rows result contains
+    function get_num_rows() { // returns number of rows result contains
         return $this->result->num_rows;
     }
 
-    function free_result(){ // free momory
+    function get_insert_id(){ // gets the id of the last record inserted
+        return $this->conn->insert_id;
+    }
+
+    function free_result(){ // free memory
         $this->result->free_result();
     }
 
