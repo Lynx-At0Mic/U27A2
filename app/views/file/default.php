@@ -11,7 +11,12 @@ if($files) {
         <div class="contentContainer equalContainer imageBrowser">
             <?php
             echo "<h2>" . $file['title'] . "</h2><h6>By " . $file['user'] . "</h6>";
-            echo "<a href='" . BASE_URL . "file/view/" . $file['file_id'] ."'><img src='" . BASE_MEDIA . "uploads/" . $file['filepath'] . "' width='100%' height='auto'></a>";?>
+            if(strtolower(pathinfo($file['filepath'],PATHINFO_EXTENSION)) === 'txt') {
+                echo "<a href='" . BASE_URL . "file/view/" . $file['file_id'] ."'><img src='" . BASE_MEDIA . "assets/img/textfile.png' width='100%' height='auto'></a>";
+            }
+            else{
+                echo "<a href='" . BASE_URL . "file/view/" . $file['file_id'] ."'><img src='" . BASE_MEDIA . "uploads/" . $file['filepath'] . "' width='100%' height='auto'></a>";
+            }?>
         </div>
 
     <?php
