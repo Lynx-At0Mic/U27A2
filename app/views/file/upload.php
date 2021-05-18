@@ -11,7 +11,7 @@ LoginManager::requireAccess(3);
             <textarea name="description" form="uploadForm" cols="30" rows="5"></textarea>
             File:
             <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Upload Image" name="submit">
+            <input type="submit" value="Upload File" name="submit">
         </form>
     </div>
 </div>
