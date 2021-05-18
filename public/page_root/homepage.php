@@ -7,6 +7,18 @@
         }
     </style>
     <h2>Git repo for this assignment - <a href="https://github.com/Lynx-At0Mic/U27A2/" style="text-decoration: none; color: lightseagreen">https://github.com/Lynx-At0Mic/U27A2/</a></h2>
+    <h2>P2</h2>
+    <p>User agent: <?php echo $_SERVER['HTTP_USER_AGENT']; ?></p>
+    <p>Screen resolution: <?php if(!@$_GET['res']){
+            echo "<a style='text-decoration: none; color: inherit;' id='screenResTag'>Click here to get screen resolution</a>";
+        }
+        else{
+            echo $_GET['res'];
+        }?></p>
+    <script>
+        let aTag = document.getElementById('screenResTag');
+        aTag.href = Config.BASE_URL + "?res=" + window.screen.availWidth + 'x' + window.screen.availHeight;
+    </script>
     <h2>Site users</h2>
     <table>
         <tr>
