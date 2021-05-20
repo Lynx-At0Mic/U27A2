@@ -5,7 +5,7 @@
     <div class="contentContainer roundFull">
         <h1><?php
             if(!$success){echo $error;}
-            else {echo 'File uploaded!';}
+            else {echo 'Post created!';}
             ?></h1>
     </div>
 </div>

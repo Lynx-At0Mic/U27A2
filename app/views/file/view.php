@@ -8,6 +8,7 @@ LoginManager::requireAccess(3);
     <div class="contentContainer">
         <?php if (LoginManager::hasAccess(2)){
             echo "<a id='deletePost' href='" . BASE_URL . "file/delete/$postID'>Delete Post</a>";
+            echo "<a id='updatePost' href='" . BASE_URL . "file/update/$postID'>Update Post</a>";
         }?>
         <h1 style="text-align: left"> Title: <?php echo $postTitle; ?></h1>
         <?php

@@ -49,6 +49,28 @@ class File extends Model
 
     }
 
+    function updateFile($id, $user, $filename, $title, $description){
+        $file = $this->getFileByID($id);
+        if(!$filename){
+            $result = $this->query("UPDATE files SET user='$user', title='$title', description='$description' WHERE file_id='$id'");
+            if($result === false){ // if database error
+                $this->error = Util::errorOut($this->get_error());
+                return false;
+            }
+            return true;
+        }
+        else{
+            $filenameInDB = $id . $filename;
+            // set filename to the id + original filename
+            $result = $this->query("UPDATE files SET user='$user', title='$title', description='$description', filepath='$filenameInDB' WHERE file_id='$id'");
+            if($result === false){ // if database error
+                $this->error = Util::errorOut($this->get_error());
+                return false;
+            }
+            return $filenameInDB; // return altered filename
+        }
+    }
+
     function deleteFile($id){
         $result = $this->query("DELETE FROM files WHERE file_id = $id");
         if($result === false){ // if database error

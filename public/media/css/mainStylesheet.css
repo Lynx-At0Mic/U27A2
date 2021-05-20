@@ -551,6 +551,14 @@ form input[type="button"]:hover{
     color: inherit;
     width: 10rem;
 }
+
+#updatePost{
+    padding: 0.7rem;
+    background: dodgerblue;
+    text-decoration: none;
+    color: inherit;
+    width: 10rem;
+}
 /*utility classes that only apply on mobile, self explanatory*/
 @media screen and (max-width: 1200px){
     .removeRoundOnMobile{
