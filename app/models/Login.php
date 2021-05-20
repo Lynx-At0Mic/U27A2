@@ -4,7 +4,7 @@
 class Login extends Model
 {
     function getUserID($username){ // utility function to grab user id from username
-        $result = $this->query("SELECT account_id FROM login WHERE username = '$username' COLLATE utf8mb4_bin");
+        $result = $this->query("SELECT account_id FROM login WHERE username = '$username'");
         if($result === false){ // if database returned an error
             $this->error = Util::errorOut($this->get_error());
             return false;
