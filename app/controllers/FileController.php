@@ -74,4 +74,19 @@ class FileController extends Controller{
             $this->template->render();
         }
     }
+
+    function delete($args){
+        LoginManager::requireAccess(2);
+        if($this->model->deleteFile($args[0])){
+            LogManager::logActivity('Post deleted by user: ' . $_SESSION['username']);
+            $this->setVar('success', true);
+            $this->setVar('error', null);
+            $this->template->render();
+        }
+        else {
+            $this->setVar('success', false);
+            $this->setVar('error', $this->model->getError());
+            $this->template->render();
+        }
+    }
 }

@@ -14,6 +14,14 @@ class LoginManager
         return false;
     }
 
+    static  function hasAccess($level){ // returns true if user has access
+        $loggedIn = LoginManager::loggedIn();
+        if(!$loggedIn or @$_SESSION['access_level'] > $level){ // check user access level
+            return false;
+        }
+        return true;
+    }
+
     static function requireAccess($level){ // kills process and shows 401 unauthorised if user does not have $level or higher access rights
         $loggedIn = LoginManager::loggedIn();
         if(!$loggedIn or @$_SESSION['access_level'] > $level){ // check user access level

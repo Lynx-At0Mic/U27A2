@@ -6,9 +6,12 @@ LoginManager::requireAccess(3);
 ?>
 <div class="layoutContainer center equalContainer">
     <div class="contentContainer">
+        <?php if (LoginManager::hasAccess(2)){
+            echo "<a id='deletePost' href='" . BASE_URL . "file/delete/$postID'>Delete Post</a>";
+        }?>
         <h1 style="text-align: left"> Title: <?php echo $postTitle; ?></h1>
         <?php
-        if(strtolower(pathinfo($filepath,PATHINFO_EXTENSION)) === 'txt') {
+        if(strtolower(pathinfo($filepath,PATHINFO_EXTENSION)) === 'txt') { // if post is a text file display text box with text and not image
             $path = ROOT . DS . "public" . DS . "media" . DS . "uploads" . DS . $filepath;
             $file = fopen($path, "r");
             $text = fread($file, filesize($path));

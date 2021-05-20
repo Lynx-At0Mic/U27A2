@@ -48,4 +48,13 @@ class File extends Model
         return $filenameInDB; // return altered filename
 
     }
+
+    function deleteFile($id){
+        $result = $this->query("DELETE FROM files WHERE file_id = $id");
+        if($result === false){ // if database error
+            $this->error = Util::errorOut($this->get_error());
+            return false;
+        }
+        return true;
+    }
 }

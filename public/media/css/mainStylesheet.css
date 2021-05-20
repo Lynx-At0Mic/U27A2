@@ -543,6 +543,14 @@ form input[type="button"]:hover{
 .showOnMobile{
     display: none;
 }
+
+#deletePost{
+    padding: 0.7rem;
+    background: red;
+    text-decoration: none;
+    color: inherit;
+    width: 10rem;
+}
 /*utility classes that only apply on mobile, self explanatory*/
 @media screen and (max-width: 1200px){
     .removeRoundOnMobile{
