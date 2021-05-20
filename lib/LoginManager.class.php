@@ -14,7 +14,7 @@ class LoginManager
         return false;
     }
 
-    static  function hasAccess($level){ // returns true if user has access
+    static function hasAccess($level){ // returns true if user has access
         $loggedIn = LoginManager::loggedIn();
         if(!$loggedIn or @$_SESSION['access_level'] > $level){ // check user access level
             return false;

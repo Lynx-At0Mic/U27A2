@@ -4,7 +4,7 @@
 class LoginController extends Controller
 {
 
-    function defaultAction(){ // shows logon screendefault action for the the /login url
+    function defaultAction(){ // shows logon screen default action for the the /login url
         if(@$_SESSION['username'] and @$_SESSION['token']){ // if user is already logged in
             // validate user login credentials
             if($this->model->validateAccessToken($this->model->getUserID($_SESSION['username']), $_SESSION['token'])){
@@ -77,6 +77,9 @@ class LoginController extends Controller
     function logout(){ // unsets session variables which logs out the user
         unset($_SESSION['username']);
         unset($_SESSION['token']);
-//        $this->template->render(false);
+    }
+
+    function getUserList(){
+        
     }
 }

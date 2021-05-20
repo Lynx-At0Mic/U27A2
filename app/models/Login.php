@@ -147,4 +147,11 @@ class Login extends Model
         $this->free_result();
         return $token;
     }
+
+    function getUsers(){
+        $result = $this->model->query('SELECT account_id, access_level, username FROM login');
+        if($result == false){
+
+        }
+    }
 }
