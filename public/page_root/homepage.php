@@ -11,13 +11,23 @@
     <p>User agent: <?php echo $_SERVER['HTTP_USER_AGENT']; ?></p>
     <p>Screen resolution: <?php if(!@$_GET['res']){
             echo "<a style='text-decoration: none; color: inherit;' id='screenResTag'>Click here to get screen resolution</a>";
+            echo "<style>#box{background-color: gray; padding: 2rem;}</style>";
         }
         else{
-            echo $_GET['res'];
+            $size = $_GET['res'];
+            echo $size;
+            $width = preg_split("/x/", $size)[0];
+            if($width < 1000){
+                echo "<style>#box{background-color: red; padding: 2rem;}</style>";
+            }
+            else{
+                echo "<style>#box{background-color: greenyellow; padding: 2rem;}</style>";
+            }
         }?></p>
+    <h4 id="box">This is gray by default, red id width is less than 1000, and green if it is greater than 1000</h4>
     <script>
         let aTag = document.getElementById('screenResTag');
-        aTag.href = Config.BASE_URL + "?res=" + window.screen.availWidth + 'x' + window.screen.availHeight;
+        aTag.href = Config.BASE_URL + "?res=" + window.innerWidth + 'x' + window.innerHeight;
     </script>
     <h2>Site users</h2>
     <table>
