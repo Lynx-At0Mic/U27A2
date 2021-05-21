@@ -122,5 +122,17 @@
             <td>Activities and errors are loged to sitelog.log</td>
             <td>PASS</td>
         </tr>
+        <tr>
+            <td>Error log</td>
+            <td>Error log shows errors in correct format</td>
+            <td>Error log shows errors in correct format</td>
+            <td>PASS</td>
+        </tr>
+        <tr>
+            <td>Stats</td>
+            <td>Statistics are shown correctly</td>
+            <td>Statistics are shown correctly</td>
+            <td>PASS</td>
+        </tr>
     </table>
 </div>
