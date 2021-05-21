@@ -79,7 +79,28 @@ class LoginController extends Controller
         unset($_SESSION['token']);
     }
 
-    function getUserList(){
-        
+    function manage(){ // generate list of users for admin panel
+        $users = $this->model->getUsers();
+        if($users){
+            $this->setVar('users', $users);
+            $this->setVar('error', null);
+        }
+        else{
+            $this->setVar('users', null);
+            $this->setVar('error', $this->model->getError());
+        }
+        $this->template->render();
+    }
+
+    function removeUser($args){
+        if(!$this->model->removeUser($args[0])){
+            $this->setVar('success', false);
+            $this->setVar('error', $this->model->getError());
+        }
+        else{
+            $this->setVar('success', true);
+            $this->setVar('error', null);
+        }
+        $this->template->render();
     }
 }

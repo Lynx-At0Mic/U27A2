@@ -148,10 +148,26 @@ class Login extends Model
         return $token;
     }
 
-    function getUsers(){
-        $result = $this->model->query('SELECT account_id, access_level, username FROM login');
+    function getUsers(){ // get list of users from database
+        $result = $this->query('SELECT account_id, access_level, username FROM login', true);
         if($result == false){
+            $this->error = Util::errorOut($this->get_error());
+            return false;
+        }
+        $rows = array();
+        while ($row = $result->fetch_assoc()){
+            $rows[] = $row;
+        }
+        return $rows;
+    }
 
+    function removeUser($id){
+        $result = $this->query("DELETE FROM login WHERE account_id='$id'");
+        if(!$result){
+            return false;
+        }
+        else{
+            return true;
         }
     }
 }
