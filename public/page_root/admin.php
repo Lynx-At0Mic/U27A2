@@ -27,6 +27,9 @@
             <h5 style="background: dodgerblue; padding: 2rem; width: <?php echo $percentOfActivities;?>%;"><?php echo floor($percentOfActivities);?>% Activities</h5>
         </div>
         <h1>Site activity log</h1>
-        <textarea cols="80" rows="50"><?php echo $text; ?></textarea>
+        <textarea name="textArea" form="saveLog" cols="80" rows="50"><?php echo $text; ?></textarea>
+        <form id="saveLog" method="post" action="<?php echo BASE_URL;?>saveLog">
+            <input type="submit" id="updatePost" value="Save Log">
+        </form>
     </div>
 </div>
