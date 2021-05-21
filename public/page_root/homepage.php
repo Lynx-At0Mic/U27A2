@@ -80,6 +80,19 @@
             <td>Login not accepted</td>
             <td>Login not accepted</td>
             <td>PASS</td>
+        </tr>
+        <tr>
+            <td>Delete login</td>
+            <td>Account is deleted</td>
+            <td>Account is deleted</td>
+            <td>PASS</td>
+        </tr>
+        <tr>
+            <td>Create account</td>
+            <td>Account is created when it is valid</td>
+            <td>Account is created when it is valid</td>
+            <td>PASS</td>
+        </tr>
         <tr>
             <td>Invalid Access Rights</td>
             <td>Access denied</td>
