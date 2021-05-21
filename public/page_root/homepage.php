@@ -131,8 +131,8 @@
         </tr>
         <tr>
             <td>Logging</td>
-            <td>Activities and errors are loged to sitelog.log</td>
-            <td>Activities and errors are loged to sitelog.log</td>
+            <td>Activities and errors are logged to sitelog.log</td>
+            <td>Activities and errors are logged to sitelog.log</td>
             <td>PASS</td>
         </tr>
         <tr>
